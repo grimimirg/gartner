@@ -13,8 +13,8 @@
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "core-js": "^3.8.3",
-    "vue": "^3.2.26",
-    "vuex": "^4.0.2"
+    "pinia": "^2.1.6",
+    "vue": "^3.2.26"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

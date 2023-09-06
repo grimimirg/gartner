@@ -19,8 +19,8 @@ GPIO.setup(pin, GPIO.OUT)
 # ---------------------------------------------------------------------
 
 
-@app.route('/on')
-def turn_on():
+@app.route('/start')
+def start():
     try:
         GPIO.output(pin, GPIO.HIGH)
         time.sleep(2)
@@ -32,12 +32,12 @@ def turn_on():
     return Response(ResponseCode.OK, ResponseMessages.OK)
 
 
-@app.route('/off')
-def turn_off():
+@app.route('/stop')
+def stop():
     GPIO.output(pin, GPIO.LOW)
     return Response(ResponseCode.OK, ResponseMessages.OK)
 
 
 # ---------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)

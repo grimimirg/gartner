@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { useConstants } from "@/store/constants";
+import { useCounters } from "@/store/counters";
+import { storeToRefs } from "pinia";
 
 import axios from "axios";
 
@@ -29,23 +31,23 @@ export default {
   },
 
   methods: {
-    ...mapActions({
-      startMeasuringTime: "startMeasuringTime",
-      stopMeasuringTime: "stopMeasuringTime",
-    }),
     start() {
+      const constants = storeToRefs(useConstants());
+      const counters = storeToRefs(useCounters());
       axios
-        .get(this.$store.baseURL + "/start")
+        .get(constants.baseURL + "/start")
         .then(() => {
-          this.$store.startMeasuringTime();
+          counters.startMeasuringTime();
         })
         .catch(() => {});
     },
     stop() {
+      const constants = storeToRefs(useConstants());
+      const counters = storeToRefs(useCounters());
       axios
-        .get(this.$store.baseURL + "/stop")
+        .get(constants.baseURL + "/stop")
         .then(() => {
-          this.$store.stopMeasuringTime();
+          counters.stopMeasuringTime();
         })
         .catch(() => {});
     },
