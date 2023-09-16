@@ -1,62 +1,22 @@
 <template>
-  <h3 class="display-6">{{ title }}</h3>
-  <div class="col-lg-7">
-    <p class="lead">
-      <button class="btn btn-primary btn-lg button-margin" @click="start">
-        {{ buttons.start }}
-      </button>
-      <button class="btn btn-primary btn-lg button-margin" @click="stop">
-        {{ buttons.stop }}
-      </button>
-    </p>
+  <div class="form-check form-switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+      v-on:change="
+        (event) => (event.target.checked ? store.start() : store.stop())
+      "
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >Gesù caro</label
+    >
   </div>
 </template>
 
-<script>
-import { useConstants } from "@/store/constants";
-import { useCounters } from "@/store/counters";
-import { storeToRefs } from "pinia";
-
-import axios from "axios";
-
-export default {
-  data() {
-    return {
-      title: "Control room",
-      buttons: {
-        start: "Start",
-        stop: "Stop",
-      },
-    };
-  },
-
-  methods: {
-    start() {
-      const constants = storeToRefs(useConstants());
-      const counters = storeToRefs(useCounters());
-      axios
-        .get(constants.baseURL + "/start")
-        .then(() => {
-          counters.startMeasuringTime();
-        })
-        .catch(() => {});
-    },
-    stop() {
-      const constants = storeToRefs(useConstants());
-      const counters = storeToRefs(useCounters());
-      axios
-        .get(constants.baseURL + "/stop")
-        .then(() => {
-          counters.stopMeasuringTime();
-        })
-        .catch(() => {});
-    },
-  },
-};
+<script setup>
+import { useControlStore } from "@/stores/control";
+const store = useControlStore();
 </script>
-
-<style>
-.button-margin {
-  margin: 5px;
-}
-</style>
+<style></style>
