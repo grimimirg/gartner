@@ -20,9 +20,7 @@
 
   <footer
     class="fixed-bottom container-fluid bg-dark text-secondary px-4 py-5 text-center mt-auto text-white-50"
-  >
-    <p>©2023 Andrea Grimandi</p>
-  </footer>
+  ></footer>
 </template>
 
 <script>
@@ -37,5 +35,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
