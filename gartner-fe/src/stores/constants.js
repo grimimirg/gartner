@@ -4,9 +4,9 @@ export const useConstantStore = defineStore("consants", {
   state: () => ({
     baseURL: "http://localhost:5000",
     env: {
-      ...PRODUCTION,
-      ...TEST,
-      ...DEVELOPMENT,
+      PRODUCTION: "PRODUCTION",
+      TEST: "TEST",
+      DEVELOPMENT: "DEVELOPMENT",
     },
   }),
 });
