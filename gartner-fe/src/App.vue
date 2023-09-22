@@ -5,21 +5,24 @@
     <nav class="py-2 fs-3">
       <div class="row">
         <div class="col-6 text-center border-end">
-          <i class="bi bi-play-circle"></i>
+          <router-link class="text-reset" to="/statistic-report">
+            <div>
+              <i class="bi bi-clock-history"></i>
+            </div>
+          </router-link>
         </div>
-        <div class="col-6 text-center"><i class="bi bi-clock-history"></i></div>
+        <div class="col-6 text-center">
+          <router-link class="text-reset" to="/control-room">
+            <div>
+              <i class="bi bi-play-circle"></i>
+            </div>
+          </router-link>
+        </div>
       </div>
     </nav>
 
     <div class="container px-4 py-5 my-5">
-      <div class="row">
-        <div class="col">
-          <control-room></control-room>
-        </div>
-        <div class="col">
-          <statistic-report></statistic-report>
-        </div>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 
@@ -29,14 +32,7 @@
 </template>
 
 <script>
-import ControlRoom from "./components/ControlRoom.vue";
-import StatisticReport from "./components/StatisticReport.vue";
-
 export default {
   name: "App",
-  components: {
-    ControlRoom,
-    StatisticReport,
-  },
 };
 </script>
