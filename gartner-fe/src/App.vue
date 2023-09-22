@@ -1,20 +1,28 @@
 <template>
-  <div class="container-fluid py-5">
-    <div class="pb-3 mb-4 border-bottom"></div>
+  <div class="container-fluid py-3">
+    <h1 class="display-6 text-center">Welcome to GARTNER!</h1>
 
-    <div class="container">
-      <h1 class="display-1">Welcome to GARTNER!</h1>
-    </div>
-
-    <div class="container px-4 py-5 my-5">
+    <nav class="py-2 fs-3">
       <div class="row">
-        <div class="col">
-          <control-room></control-room>
+        <div class="col-6 text-center border-end">
+          <router-link class="text-reset" to="/statistic-report">
+            <div>
+              <i class="bi bi-clock-history"></i>
+            </div>
+          </router-link>
         </div>
-        <div class="col">
-          <statistic-report></statistic-report>
+        <div class="col-6 text-center">
+          <router-link class="text-reset" to="/control-room">
+            <div>
+              <i class="bi bi-play-circle"></i>
+            </div>
+          </router-link>
         </div>
       </div>
+    </nav>
+
+    <div class="container px-4 py-5 my-5">
+      <router-view></router-view>
     </div>
   </div>
 
@@ -24,14 +32,7 @@
 </template>
 
 <script>
-import ControlRoom from "./components/ControlRoom.vue";
-import StatisticReport from "./components/StatisticReport.vue";
-
 export default {
   name: "App",
-  components: {
-    ControlRoom,
-    StatisticReport,
-  },
 };
 </script>
