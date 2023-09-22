@@ -1,7 +1,9 @@
-import axios from "axios";
 import { defineStore } from "pinia";
+
 import { useReportStore } from "./report";
 import { useConstantStore } from "./constants";
+
+import axios from "axios";
 
 export const useControlStore = defineStore("control", {
   actions: {
@@ -14,14 +16,23 @@ export const useControlStore = defineStore("control", {
   },
 });
 
+//--------------------------------------------------------------------------------
+// FUNCTIONS
+
 function toggleRun(action) {
-  console.log(action);
   const constantStore = useConstantStore();
   const reportStore = useReportStore();
+
+  const builtUrl = constantStore.baseURL + action;
+  this.$log.debug(builtUrl + " performing the HTTP call");
+
   axios
-    .get(constantStore.baseURL + action)
+    .get(builtUrl)
     .then(() => {
       reportStore.toggleRun();
+      this.$log.debug(builtUrl + " SUCCESS");
     })
-    .catch(() => {});
+    .catch((res) => {
+      this.$log.error(builtUrl + " ERROR -> " + res);
+    });
 }

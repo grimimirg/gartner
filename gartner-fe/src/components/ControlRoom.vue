@@ -9,9 +9,7 @@
         (event) => (event.target.checked ? store.start() : store.stop())
       "
     />
-    <label class="form-check-label" for="flexSwitchCheckDefault"
-      >Gesù caro</label
-    >
+    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
   </div>
 </template>
 
@@ -19,4 +17,3 @@
 import { useControlStore } from "@/stores/control";
 const store = useControlStore();
 </script>
-<style></style>
